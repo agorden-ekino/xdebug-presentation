@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pizza{% endblock %}
+
+{% block body %}
+    <h1>Pizza</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pizza.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ pizza.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pizza_index') }}">back to list</a>
+
+    <a href="{{ path('app_pizza_edit', {'id': pizza.id}) }}">edit</a>
+
+    {{ include('pizza/_delete_form.html.twig') }}
+{% endblock %}
