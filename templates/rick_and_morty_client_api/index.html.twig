@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Random Character{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <h1 class="mb-3">Random Character</h1>
+
+    <div>
+        <div>
+            <img src="{{ random_character.image }}" alt="image of {{ random_character.name }}">
+        </div>
+        <div>Name: {{ random_character.name }}</div>
+        <div>Status: {{ random_character.status }}</div>
+        <div>Species: {{ random_character.species }}</div>
+        <div>Type: {% if random_character.type is not empty %}{{ random_character.type }}{% else %}Unknown{% endif %}</div>
+        <div>Gender: {{ random_character.gender }}</div>
+        <div>Origin: {{ random_character.origin.name }}</div>
+        <div>
+            {% if random_character.origin.url is not empty %}
+                <a href="{{ random_character.origin.url }}" target="_blank">Link to API origin location page</a>
+            {% else %}
+                No API link to origin location
+            {% endif %}
+        </div>
+        <div>Location: {{ random_character.location.name }}</div>
+        <div>
+            {% if random_character.location.url is not empty %}
+                <a href="{{ random_character.location.url }}" target="_blank">Link to API origin location page</a>
+            {% else %}
+                No API link to origin location
+            {% endif %}
+        </div>
+        <div>
+            Episode(s) where the character appears:
+            <ol>
+                {% for episode in random_character.episode %}
+                    <li><a href="{{ episode }}" target="_blank">Link to API episode page</a></li>
+                {% endfor %}
+            </ol>
+        </div>
+        <div>API character ID: {{ random_character.id }}</div>
+        <div>
+            <a href="{{ random_character.url }}" target="_blank">Link to API character page</a>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

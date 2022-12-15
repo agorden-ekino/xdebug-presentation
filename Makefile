@@ -36,7 +36,7 @@ dependencies-security-check: ## check dependencies security vulnerabilities
 
 infra-up:
 	docker-machine start local-docker
-	eval $(docker-machine env local-docker)
+	eval $$(docker-machine env local-docker)
 	$(DOCKER_COMPOSE) up -d
 	@make server-start
 
