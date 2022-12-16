@@ -14,9 +14,14 @@
         <div>Name: {{ random_character.name }}</div>
         <div>Status: {{ random_character.status }}</div>
         <div>Species: {{ random_character.species }}</div>
-        <div>Type: {% if random_character.type is not empty %}{{ random_character.type }}{% else %}Unknown{% endif %}</div>
+        <div>Type: {% if random_character.type is not empty %}{{ random_character.type }}{% else %}unknown{% endif %}</div>
         <div>Gender: {{ random_character.gender }}</div>
-        <div>Origin: {{ random_character.origin.name }}</div>
+        <div>
+            Origin: {{ random_character.origin.name }}
+            {% if random_character.origin_detailed is defined %}
+                 - Dimension: {{ random_character.origin_detailed.dimension }} - Type: {{ random_character.origin_detailed.type }}
+            {% endif %}
+        </div>
         <div>
             {% if random_character.origin.url is not empty %}
                 <a href="{{ random_character.origin.url }}" target="_blank">Link to API origin location page</a>
@@ -24,19 +29,29 @@
                 No API link to origin location
             {% endif %}
         </div>
-        <div>Location: {{ random_character.location.name }}</div>
+        <div>
+            Location: {{ random_character.location.name }}
+            {% if random_character.location_detailed is defined %}
+                 - Dimension: {{ random_character.location_detailed.dimension }} - Type: {{ random_character.location_detailed.type }}
+            {% endif %}
+        </div>
         <div>
             {% if random_character.location.url is not empty %}
-                <a href="{{ random_character.location.url }}" target="_blank">Link to API origin location page</a>
+                <a href="{{ random_character.location.url }}" target="_blank">Link to API actual location page</a>
             {% else %}
-                No API link to origin location
+                No API link to actual location
             {% endif %}
         </div>
         <div>
             Episode(s) where the character appears:
             <ol>
-                {% for episode in random_character.episode %}
-                    <li><a href="{{ episode }}" target="_blank">Link to API episode page</a></li>
+{#                {{ dump(random_character.episodes_detailed) }}#}
+                {% for episode in random_character.episodes_detailed %}
+{#                    {{ dump(episode) }}#}
+                    <li>
+                        {{ episode.episode }}: "{{ episode.name }}", first aired on {{ episode.air_date }} -
+                        <a href="{{ episode.url }}" target="_blank">Link to API episode page</a>
+                    </li>
                 {% endfor %}
             </ol>
         </div>

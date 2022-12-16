@@ -36,6 +36,45 @@ class RickAndMortyClientApi
         );
         $content = json_decode($response->getContent(), true);
 
+        if (isset($content['episode'])) {
+            foreach ($content['episode'] as $episodeUrl) {
+                $episodeNumber = basename($episodeUrl);
+                $content['episodes_detailed']['episode_'.$episodeNumber] = $this->getEpisodeByNumber($episodeNumber);
+            }
+        }
+
+        if (isset($content['origin']['url']) && $content['origin']['name'] !== 'unknown') {
+            $originNumber = basename($content['origin']['url']);
+            $content['origin_detailed'] = $this->getLocationByNumber($originNumber);
+        }
+
+        if (isset($content['location']['url']) && $content['location']['name'] !== 'unknown') {
+            $locationNumber = basename($content['location']['url']);
+            $content['location_detailed'] = $this->getLocationByNumber($locationNumber);
+        }
+
+        return $content;
+    }
+
+    public function getEpisodeByNumber(int $number)
+    {
+        $response = $this->client->request(
+            self::METHOD_GET,
+            '/api/episode/'.$number,
+        );
+        $content = json_decode($response->getContent(), true);
+
+        return $content;
+    }
+
+    public function getLocationByNumber(int $number)
+    {
+        $response = $this->client->request(
+            self::METHOD_GET,
+            '/api/location/'.$number,
+        );
+        $content = json_decode($response->getContent(), true);
+
         return $content;
     }
 }

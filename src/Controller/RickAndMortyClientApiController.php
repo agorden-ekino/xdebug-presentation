@@ -16,7 +16,7 @@ class RickAndMortyClientApiController extends AbstractController
         $this->clientApi = $clientApi;
     }
 
-    #[Route('/rick/and/morty/client/api', name: 'app_rick_and_morty_client_api')]
+    #[Route('/random-character', name: 'random_character')]
     public function index(): Response
     {
         $randomCharacter = $this->clientApi->getRandomCharacter();
