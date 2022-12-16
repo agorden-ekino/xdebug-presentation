@@ -45,9 +45,7 @@
         <div>
             Episode(s) where the character appears:
             <ol>
-{#                {{ dump(random_character.episodes_detailed) }}#}
                 {% for episode in random_character.episodes_detailed %}
-{#                    {{ dump(episode) }}#}
                     <li>
                         {{ episode.episode }}: "{{ episode.name }}", first aired on {{ episode.air_date }} -
                         <a href="{{ episode.url }}" target="_blank">Link to API episode page</a>
