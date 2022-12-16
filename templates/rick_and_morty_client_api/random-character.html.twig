@@ -7,6 +7,9 @@
 <div class="container mt-5">
     <h1 class="mb-3">Random Character</h1>
 
+    <a href="{{ path('api_index') }}" class="btn btn-dark m-2">Return to index</a>
+    <a href="{{ path('api_random_character') }}" class="btn btn-dark m-2">New Random Character</a>
+
     <div>
         <div>
             <img src="{{ random_character.image }}" alt="image of {{ random_character.name }}">

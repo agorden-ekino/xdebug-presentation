@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}API Index{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-5">
+        <h1 class="mb-3">API Index</h1>
+
+        <div>
+            <ul>
+                <li><a href="{{ path('app_home') }}" class="btn btn-dark m-2">Homepage</a></li>
+                <li><a href="{{ path('api_random_character') }}" class="btn btn-dark m-2">Random Character</a></li>
+                <li><a href="{{ path('api_filtered_characters') }}" class="btn btn-dark m-2">Filtered Character</a></li>
+            </ul>
+        </div>
+
+    </div>
+{% endblock %}

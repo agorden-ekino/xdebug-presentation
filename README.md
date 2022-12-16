@@ -1,12 +1,23 @@
 # Xdebug-Presentation
 
-## Installation
+## Project Installation
 
 Install docker and build infra:
-`docker-compose up --build --remove-orphans -d`
+```shell
+docker-compose up --build --remove-orphans -d
+```
 
 To start the database container and the dev servers:
-`make infra-up`
+```shell
+make infra-up
+```
 
 To run Mysql in command line for development purpose:
-`docker-compose exec database mysql -u root --password=password`
+```shell
+docker-compose exec database mysql -u root --password=password
+```
+
+## Xdebug
+
+### Install
+

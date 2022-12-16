@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pizza App Home{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-3">Pizza App Index</h1>
+
+        <div>
+            <ul class="list-group">
+                <li><a href="{{ path('app_home') }}" class="btn btn-dark m-2">Homepage</a></li>
+                <li><a href="{{ path('app_pizza_index') }}" class="btn btn-dark m-2">Pizza Index</a></li>
+{#                <li><a href="{{ path('ingredient_index') }}" class="btn btn-dark m-2">API Index</a></li>#}
+            </ul>
+        </div>
+
+    </div>
+{% endblock %}
