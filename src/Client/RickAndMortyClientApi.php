@@ -56,6 +56,22 @@ class RickAndMortyClientApi
         return $content;
     }
 
+    public function getCharactersWithFilters()
+    {
+        $response = $this->client->request(
+            self::METHOD_GET,
+            '/api/character/',
+            [
+                'query' => [
+                    'status' => 'unknown',
+                    ]
+            ]
+        );
+        $content = json_decode($response->getContent(), true);
+
+        return $content;
+    }
+
     public function getEpisodeByNumber(int $number)
     {
         $response = $this->client->request(

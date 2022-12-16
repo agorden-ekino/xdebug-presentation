@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Filtered Characters{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-5">
+        <h1 class="mb-3">Filtered Characters</h1>
+
+        <div>
+            <div>Name: plop</div>
+        </div>
+        {{ dump(filtered_characters.info) }}
+        {{ dump(filtered_characters.results) }}
+
+    </div>
+{% endblock %}

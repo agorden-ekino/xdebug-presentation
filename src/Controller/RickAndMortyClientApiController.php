@@ -17,12 +17,22 @@ class RickAndMortyClientApiController extends AbstractController
     }
 
     #[Route('/random-character', name: 'random_character')]
-    public function index(): Response
+    public function displayRandomCharacter(): Response
     {
         $randomCharacter = $this->clientApi->getRandomCharacter();
 
-        return $this->render('rick_and_morty_client_api/index.html.twig', [
+        return $this->render('rick_and_morty_client_api/random-character.html.twig', [
             'random_character' => $randomCharacter,
+        ]);
+    }
+
+    #[Route('/filtered-characters', name: 'filtered_characters')]
+    public function index(): Response
+    {
+        $filteredCharacters = $this->clientApi->getCharactersWithFilters();
+
+        return $this->render('rick_and_morty_client_api/filtered-characters.html.twig', [
+            'filtered_characters' => $filteredCharacters,
         ]);
     }
 }
