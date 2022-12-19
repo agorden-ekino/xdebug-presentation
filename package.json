@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
-    "@symfony/stimulus-bridge": "^2.0.0"
+    "@symfony/stimulus-bridge": "^2.0.0",
+    "stimulus": "^3.2.1"
   }
 }

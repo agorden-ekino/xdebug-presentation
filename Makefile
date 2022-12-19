@@ -1,4 +1,5 @@
-.PHONY: app-about app-install composer-validate dependencies-security-check infra-up infra-stop server-start server-status server-stop help
+.PHONY: app-about app-install composer-validate dependencies-security-check linux-infra-up mac-infra-up linux-infra-stop mac-infra-stop server-start \
+server-status server-stop help
 
 # Parameters
 SHELL := /bin/bash
@@ -34,13 +35,23 @@ composer-validate: ## validate composer config
 dependencies-security-check: ## check dependencies security vulnerabilities
 	$(SYMFONY) check:security
 
-infra-up:
+linux-infra-up:
+	$(DOCKER_COMPOSE) up -d
+	sudo service mysql stop
+	@make server-start
+
+mac-infra-up:
 	docker-machine start local-docker
 	eval $$(docker-machine env local-docker)
 	$(DOCKER_COMPOSE) up -d
 	@make server-start
 
-infra-stop:
+linux-infra-stop:
+	@make server-stop
+	$(DOCKER_COMPOSE) stop
+	sudo service mysql start
+
+mac-infra-stop:
 	@make server-stop
 	$(DOCKER_COMPOSE) stop
 	$(DOCKER_MACHINE) stop local-docker

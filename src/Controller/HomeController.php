@@ -19,4 +19,11 @@ class HomeController extends AbstractController
     {
         return $this->render('home/pizza-app-index.html.twig');
     }
+
+    #[Route('/xdebug/', name: 'xdebug_info')]
+    public function xdebugInfo()
+    {
+        xdebug_info();
+        return $this->render('home/xdebug-info.html.twig');
+    }
 }

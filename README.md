@@ -8,6 +8,11 @@ Install docker and build infra:
 docker-compose up --build --remove-orphans -d
 ```
 
+```shell
+composer install
+yarn install
+```
+
 To start the database container and the dev servers:
 
 ```shell
